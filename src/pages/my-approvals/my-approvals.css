@@ -1,0 +1,51 @@
+.my-approvals-page {
+  padding: 2rem;
+}
+
+.approval-recipe-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.approval-recipe-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.approval-recipe-image {
+  height: 200px;
+  flex: 1;
+}
+
+.approval-recipe-detail {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.approval-recipe-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.approval-recipe-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.view-recipe-link {
+  align-self: flex-start;
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 15px;
+}

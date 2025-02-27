@@ -1,0 +1,12 @@
+.profile-container {
+  padding: 2rem;
+}
+
+.profile-container h1 {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.profile-details p {
+  margin-bottom: 10px;
+}

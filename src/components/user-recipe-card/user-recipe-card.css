@@ -1,0 +1,81 @@
+.user-recipe-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-recipe-image {
+  height: 200px;
+  flex: 1;
+}
+
+.user-recipe-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.user-recipe-content {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-recipe-title {
+  font-size: 1.5em;
+  margin: 8px 0;
+}
+
+.user-recipe-category {
+  font-size: 1em;
+  color: #666;
+}
+
+.user-recipe-status {
+  font-size: 0.875em;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.user-recipe-status--pending {
+  color: orange;
+}
+
+.user-recipe-status--approved {
+  color: green;
+}
+
+.user-recipe-status--rejected {
+  color: red;
+}
+
+.user-recipe-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-view-recipe-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+
+.user-view-recipe-link:hover {
+  text-decoration: underline;
+}
+
+.user-recipe-buttons {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}

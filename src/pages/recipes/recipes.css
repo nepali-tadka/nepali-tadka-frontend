@@ -1,0 +1,13 @@
+.recipes-page {
+  padding: 2rem;
+}
+
+.recipes-page h1 {
+  color: var(--primary-color);
+}
+
+.all-recipe-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}

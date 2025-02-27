@@ -1,0 +1,52 @@
+:root {
+  font-family: "Inter", system-ui, "Avenir", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.25em;
+  line-height: 1.1;
+}
+
+:root {
+  --primary-color: #d35400;
+  --primary-color-hover: #e67e22;
+  --secondary-color: #2980b9;
+  --secondary-color-hover: #3498db;
+  --danger-color: #c0392b;
+  --danger-color-hover: #e74c3c;
+  --ghost-color: #848484;
+  --ghost-color-hover: #c4c4c4;
+  --background-color: #f1e8dd;
+  --text-color: #333333;
+  --header-padding: 1rem 2rem;
+  --footer-padding: 10px 20px;
+  --transition-duration: 0.3s;
+  --border-radius: 8px;
+  --font-size-large: 3.2em;
+  --font-size-medium: 1em;
+  --font-size-small: 0.875em;
+  --toastify-icon-color-info: var(--primary-color);
+  --toastify-icon-color-success: var(--primary-color);
+  --toastify-icon-color-warning: var(--primary-color);
+  --toastify-icon-color-error: var(--primary-color);
+  --toastify-color-progress-info: var(--primary-color);
+  --toastify-color-progress-success: var(--primary-color);
+  --toastify-color-progress-warning: var(--primary-color);
+  --toastify-color-progress-error: var(--primary-color);
+}

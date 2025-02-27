@@ -1,0 +1,39 @@
+.textarea-field {
+  margin-bottom: 15px;
+}
+
+.textarea-field__label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.textarea-field__textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  resize: vertical;
+  min-height: 100px;
+  font-family: "Inter", system-ui, "Avenir", Helvetica, Arial, sans-serif;
+}
+
+.textarea-field__textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(211, 84, 0, 0.5);
+  outline: none;
+}
+
+.textarea-field__textarea--error {
+  border-color: red;
+}
+
+.textarea-field__error {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
