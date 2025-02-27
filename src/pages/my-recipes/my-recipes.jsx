@@ -47,7 +47,7 @@ const MyRecipes = () => {
         </div>
         <Link to="/add-recipe">
           <Button variant="default">
-            <i class="fa fa-plus add-recipe__icon" aria-hidden="true"></i>
+            <i className="fa fa-plus add-recipe__icon" aria-hidden="true"></i>
             <span>Add Recipe</span>
           </Button>
         </Link>

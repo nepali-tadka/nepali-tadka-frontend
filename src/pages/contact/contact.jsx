@@ -31,7 +31,6 @@ const Contact = () => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length === 0) {
-      console.log("Form submitted successfully", formData);
       toast.success("Message sent successfully!");
     } else {
       setErrors(validationErrors);

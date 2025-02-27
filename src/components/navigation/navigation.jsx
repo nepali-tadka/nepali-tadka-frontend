@@ -26,7 +26,6 @@ const Navigation = () => {
   };
 
   const isAdmin = (user) => {
-    console.log(user);
     return user.role.name === "ADMIN";
   };
 
