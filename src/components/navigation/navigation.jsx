@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { AuthContext } from "../../context/auth.context";
 import "./navigation.css";
@@ -10,6 +10,12 @@ const Navigation = () => {
   const user = getUser();
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
+
+  const onSignOut = () => {
+    signOut();
+    navigate("/login");
+  };
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -70,7 +76,7 @@ const Navigation = () => {
                 <Link to="/my-profile">My Profile</Link>
                 <Link to="/my-recipes">My Recipes</Link>
                 {isAdmin(user) && <Link to="/my-approvals">My Approvals</Link>}
-                <button onClick={signOut} className="dropdown-content__button">
+                <button onClick={onSignOut} className="dropdown-content__button">
                   Sign Out
                 </button>
               </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 
+import { useAuth } from "../../../context/auth.context";
 import Button from "../../../components/button/button";
 import TextAreaField from "../../../components/textarea-field/textarea-field";
 import {
@@ -17,6 +18,7 @@ const RecipeDetail = () => {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ rating: 1, review: "" });
   const navigate = useNavigate();
+  const { authenticated } = useAuth();
 
   const getFullUserName = (user) => {
     return `${user.firstname} ${user.lastname}`;
@@ -109,51 +111,60 @@ const RecipeDetail = () => {
 
       <h2>Reviews</h2>
       <ul className="recipe-review__list">
-        {reviews?.map((review, index) => (
-          <li key={index} className="recipe-review__item">
-            <div className="recipe-review__header">
-              <div className="recipe-review__user">
-                <strong>{getFullUserName(review.user)}</strong>
-                <span className="recipe-review__date">
-                  {new Date(review.createdAt).toDateString()}
-                </span>
+        {reviews.length === 0 ? (
+          <i>No any reviews yet.</i>
+        ) : (
+          reviews?.map((review, index) => (
+            <li key={index} className="recipe-review__item">
+              <div className="recipe-review__header">
+                <div className="recipe-review__user">
+                  <strong>{getFullUserName(review.user)}</strong>
+                  <span className="recipe-review__date">
+                    {new Date(review.createdAt).toDateString()}
+                  </span>
+                </div>
+                <span>{renderStars(review.rating)}</span>
               </div>
-              <span>{renderStars(review.rating)}</span>
-            </div>
-            <div className="recipe-review__text">{review.review}</div>
-          </li>
-        ))}
+              <div className="recipe-review__text">{review.review}</div>
+            </li>
+          ))
+        )}
       </ul>
 
-      <h2>Leave a Review</h2>
-      <form onSubmit={handleReviewSubmit} className="review-form">
-        <div className="form-group">
-          <label>Rating:</label>
-          <select
-            name="rating"
-            value={newReview.rating}
-            onChange={handleReviewChange}
-            className="form-control"
-          >
-            {[1, 2, 3, 4, 5].map((rating) => (
-              <option key={rating} value={rating}>
-                {rating}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Review:</label>
-          <TextAreaField
-            name="review"
-            value={newReview.review}
-            onChange={handleReviewChange}
-            required
-            className="form-control"
-          />
-        </div>
-        <Button type="submit">Submit Review</Button>
-      </form>
+      {authenticated && (
+        <>
+          <h2>Leave a Review</h2>
+          <form onSubmit={handleReviewSubmit} className="review-form">
+            <div className="form-group">
+              <label>Rating:</label>
+              <select
+                name="rating"
+                value={newReview.rating}
+                onChange={handleReviewChange}
+                className="form-control"
+              >
+                {[1, 2, 3, 4, 5].map((rating) => (
+                  <option key={rating} value={rating}>
+                    {rating}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Review:</label>
+              <TextAreaField
+                name="review"
+                value={newReview.review}
+                onChange={handleReviewChange}
+                required
+                className="form-control"
+              />
+            </div>
+            <Button type="submit">Submit Review</Button>
+          </form>
+        </>
+      )}
     </div>
   );
 };
