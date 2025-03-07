@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import RecipeCard from "../../components/recipe-card/recipe-card";
 import RecipeSearch from "../../components/recipe-search/recipe-search";
 import { fetchRecipes } from "../../services/recipe.service";
+import { fetchCategories } from "../../services/category.service";
 import "./recipes.css";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -20,16 +23,36 @@ const Recipes = () => {
       }
     };
 
+    const getCategories = async () => {
+      try {
+        const data = await fetchCategories();
+        setCategories(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
     getRecipes();
+    getCategories();
   }, []);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const filteredRecipes = recipes.filter((recipe) => {
+    const matchesSearchTerm = recipe.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory
+      ? recipe.category._id === selectedCategory
+      : true;
+    return matchesSearchTerm && matchesCategory;
+  });
 
   return (
     <div className="recipes-page">
@@ -40,6 +63,9 @@ const Recipes = () => {
         value={searchTerm}
         onChange={handleSearch}
         placeholder="Search recipes by name..."
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategoryChange={handleCategoryChange}
       />
       <div className="all-recipe-list">
         {filteredRecipes.map((recipe) => (
