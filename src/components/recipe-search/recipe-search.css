@@ -1,7 +1,12 @@
-.recipe-search {
+.recipe-search__input-container {
   position: relative;
-  max-width: 400px;
-  margin-bottom: 2rem;
+  width: 350px;
+}
+
+.recipe-search {
+  display: flex;
+  align-items: start;
+  gap: 2rem;
 }
 
 .recipe-search input {
@@ -10,9 +15,17 @@
 
 .recipe-search__icon {
   position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 0.8rem;
+  top: 0.8rem;
   color: var(--text-color);
   opacity: 0.5;
+}
+
+.recipe-search__dropdown {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
