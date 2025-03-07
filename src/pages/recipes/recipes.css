@@ -11,3 +11,10 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
+
+.no-results {
+  text-align: start;
+  color: var(--text-color);
+  margin-top: 2rem;
+  font-style: italic;
+}
