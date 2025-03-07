@@ -1,0 +1,18 @@
+.recipe-search {
+  position: relative;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.recipe-search input {
+  padding-left: 2.5rem;
+}
+
+.recipe-search__icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color);
+  opacity: 0.5;
+}
