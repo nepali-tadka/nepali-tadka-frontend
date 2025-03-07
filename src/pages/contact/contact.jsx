@@ -4,12 +4,14 @@ import { toast } from "react-toastify";
 import Button from "../../components/button/button";
 import InputField from "../../components/input-field/input-field";
 import TextareaField from "../../components/textarea-field/textarea-field";
+import { sendEmail } from "../../services/email.service";
 import "./contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
   const [errors, setErrors] = useState({});
@@ -23,15 +25,29 @@ const Contact = () => {
     let tempErrors = {};
     if (!formData.name) tempErrors.name = "Name is required.";
     if (!formData.email) tempErrors.email = "Email is required.";
+    if (!formData.subject) tempErrors.subject = "Subject is required.";
     if (!formData.message) tempErrors.message = "Message is required.";
     return tempErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length === 0) {
-      toast.success("Message sent successfully!");
+      try {
+        toast.info("Sending email...");
+        await sendEmail(formData);
+        toast.success("Email sent successfully!");
+        // reset form data after email is sent
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } catch (error) {
+        toast.error("Failed to send email. Please try again.");
+      }
     } else {
       setErrors(validationErrors);
     }
@@ -58,6 +74,14 @@ const Contact = () => {
           value={formData.email}
           onChange={handleChange}
           error={errors.email}
+        />
+        <InputField
+          label="Subject"
+          type="text"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          error={errors.subject}
         />
         <TextareaField
           label="Message"
